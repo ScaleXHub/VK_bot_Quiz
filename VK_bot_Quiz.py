@@ -8,7 +8,7 @@ import vk_api
 import commands
 import os
 
-TOKEN = str(os.environ.get(token))
+TOKEN = str(os.environ.get('token'))
 
 session = vk_api.VkApi(token=TOKEN)
 vk = session.get_api()
