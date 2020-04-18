@@ -6,8 +6,9 @@ import requests
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import vk_api
 import commands
+import os
 
-TOKEN = ""
+TOKEN = str(os.environ.get(token))
 
 session = vk_api.VkApi(token=TOKEN)
 vk = session.get_api()
