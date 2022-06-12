@@ -1,8 +1,7 @@
-import vk_api
 import random
-from translit import Translit
 from pic import pictures
 from strings import errors, commands
+from translit import Translit
 
 started_quiz = {}
 
@@ -49,7 +48,7 @@ def MainCommands(vk, response, user_id, user_name):
     
     # /пикчи
     elif response.lower().startswith('/пикчи'):
-        if (len(response.split(' ', 1)) > 1 and response.split(' ', 1)[1].isdigit()):
+        if len(response.split(' ', 1)) > 1 and response.split(' ', 1)[1].isdigit():
             count = int(response.split(' ', 1)[1])
         else:
             vk.messages.send(user_id=user_id, message=errors['/пикчи'], random_id=RandId())
