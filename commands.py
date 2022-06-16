@@ -48,9 +48,12 @@ def MainCommands(vk, response, user_id, user_name):
     
     # /пикчи
     elif response.lower().startswith('/пикчи'):
-        if len(response.split(' ', 1)) > 1 and response.split(' ', 1)[1].isdigit():
+        try:
             count = int(response.split(' ', 1)[1])
-        else:
+            if count < 1:
+                raise ValueError('Count is not positive!')
+        except Exception as _ex:
+            print('[INFO] ' + repr(_ex))
             vk.messages.send(user_id=user_id, message=errors['/пикчи'], random_id=RandId())
             return
         
