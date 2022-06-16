@@ -59,7 +59,7 @@ def MainCommands(vk, response, user_id, user_name):
         
         attachment = ''
         
-        for i in range(0, count + 2):
+        for i in range(0, count):
             attachment += pictures[random.randint(0, 228)] + ','
         
         attachment = attachment.strip(',')
