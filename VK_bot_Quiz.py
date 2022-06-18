@@ -9,6 +9,22 @@ import vk_api
 import commands
 import os
 
+
+def listen(self):
+    """ Слушать сервер
+
+    :yields: :class:`Event`
+    """
+    
+    while True:
+        time.sleep(2)
+        for event in self.check():
+            yield event
+
+
+VkBotLongPoll.listen = listen
+
+
 TOKEN = str(os.environ.get('token'))
 session = vk_api.VkApi(token=TOKEN)
 vk = session.get_api()
