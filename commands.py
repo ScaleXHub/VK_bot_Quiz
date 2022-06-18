@@ -3,8 +3,6 @@ from pic import pictures
 from strings import errors, commands
 from translit import Translit
 
-started_quiz = {}
-
 
 def RandId():
     return random.randint(-9223372036854775808, 9223372036854775807)
@@ -17,7 +15,8 @@ def MainCommands(vk, response, user_id, user_name):
         vk.messages.send(user_id=user_id, message=commands, random_id=RandId())
     
     # /помощь
-    elif response.lower().startswith('/помощь') or response.lower().startswith('/команды'):
+    elif response.lower().startswith('/помощь') \
+            or response.lower().startswith('/команды'):
         vk.messages.send(user_id=user_id, message=commands, random_id=RandId())
     
     # /транслит
