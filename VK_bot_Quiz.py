@@ -9,6 +9,9 @@ import vk_api
 import commands
 import os
 
+TOKEN = str(os.environ.get('token'))
+ADMIN_ID = str(os.environ.get('ADMIN_ID'))
+
 
 def listen(self):
     """ Слушать сервер
@@ -24,8 +27,6 @@ def listen(self):
 
 VkBotLongPoll.listen = listen
 
-
-TOKEN = str(os.environ.get('token'))
 session = vk_api.VkApi(token=TOKEN)
 vk = session.get_api()
 longpoll = VkBotLongPoll(session, 149178033)
@@ -58,6 +59,9 @@ def ListenMessages():
                requests.exceptions.ReadTimeout):
             print('–' * 120)
             print("Произошла ошибка.\nВремя:" + str(datetime.datetime.utcnow()))
+        except BaseException as _ex:
+            print('[ERROR] ' + repr(_ex))
+            vk.messages.send(user_id=ADMIN_ID, message='Произошла ошибка! ' + repr(_ex) + ' Бот упал!', random_id=commands.RandId())
 
 
 if __name__ == '__main__':
