@@ -59,7 +59,7 @@ def ListenMessages():
                requests.exceptions.ReadTimeout):
             print('–' * 120)
             print("Произошла ошибка.\nВремя:" + str(datetime.datetime.utcnow()))
-        except BaseException as _ex:
+        except Exception as _ex:
             print('[ERROR] ' + repr(_ex))
             vk.messages.send(user_id=ADMIN_ID, message='Произошла ошибка! ' + repr(_ex) + ' Бот упал!', random_id=commands.RandId())
 
